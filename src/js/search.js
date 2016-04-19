@@ -40,11 +40,13 @@ export default class Search extends Component {
 
 
 	getTrack(track){
-
+		console.log('avatar', track);
+		let artwork = track.artwork_url ? track.artwork_url : './images/1355481.jpg';
 		return(
 
-			<li key={track.id}>
+			<li className="search-track-item" key={track.id}>
 
+				<img src={artwork}/>
 				{track.title}
 				<Link to={`/play/${track.id}`}>Play</Link>
 				<Link to={`/playlist/add/${track.id}`}>Add to Playlist</Link> 
@@ -62,7 +64,7 @@ export default class Search extends Component {
 
 
     return (
-      <div> 
+      <div className="search-page"> 
 
       	<input type="text" placeholder="Enter a song" value={this.state.value} onChange={::this.changeHandler}></input>
       	<button onClick={::this.clickHandler} >Search</button>
