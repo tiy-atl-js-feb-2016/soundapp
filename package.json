@@ -34,6 +34,8 @@
   "dependencies": {
     "babel-polyfill": "^6.7.4",
     "firebase-api": "^1.0.0",
+    "node-font-awesome": "^1.0.2",
+    "normalize-css": "^2.3.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-router": "^2.3.0",
