@@ -13,20 +13,46 @@ export default class PlayList extends Component {
     constructor(...args){
       super(...args);
       this.state = {
-        playlist: []
+        tracks: []
       }
     }
+
+  makeListItems(track){
+  	console.log(track);
+  	return <Link to={`/play/${track.id}`}>{track.title}</Link>
+  }
   componentWillMount(){
+    // allTracks = [];
+
     tracks.all().then(trackIDs => {
-       let promises = trackIDs.map(data =>{
-      return SC.get(`/tracks/${data.trackID}`)
-          })
-      return Promise.all(promises)
-    }).then(allSongs => {
-      this.setState({
-        playlist: allSongs
-      })
+
+      let promises = trackIDs.map(data => {
+      	// trackIDs.forEach(data => {
+
+        // console.log(data.trackID)
+        // SC.get(`/tracks/${data.trackID}`).then( trackID => {
+        //   console.log(trackID)
+
+        //   })
+        // })
+        return SC.get(`/tracks/${data.trackID}`);
+        // SC.get(`/tracks/${data.trackID}`).then(track => {
+        // 	allTracks.push(track);
+        // });
+
+        // return Promise.all(promises);
+
+      });
+
+      return Promise.all(promises);
+
+    }).then(tracks => {
+    	//console.log('tracks', tracks);
+    	this.setState({tracks: tracks});
+    }).catch(error => {
+    	console.log(error);
     })
+
   }
   makeLink(song){
     return (
@@ -34,11 +60,10 @@ export default class PlayList extends Component {
     )
   }
   render() {
-    let { playlist } = this.state;
-    console.log(playlist)
+    let { tracks } = this.state;
     return (
       <div className='playlist-wrapper'>
-        {playlist.map(::this.makeLink)}
+	      	{ tracks.map(this.makeListItems) }
       </div>
     )
   }
