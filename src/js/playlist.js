@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SC from './soundcloud';
 import firebaseAPI from 'firebase-api';
+import { Link } from 'react-router';
 
 const tracks = firebaseAPI('soundly').resource('tracks');
 //component will mount:
@@ -15,26 +16,30 @@ export default class PlayList extends Component {
         playlist: []
       }
     }
-
   componentWillMount(){
     tracks.all().then(trackIDs => {
-
-       trackIDs.forEach(data =>{
-
-        console.log(data.trackID)
-        SC.get(`/tracks/${data.trackID}`).then( trackID => {
-          console.log(trackID)
+       let promises = trackIDs.map(data =>{
+      return SC.get(`/tracks/${data.trackID}`)
           })
-        })
-      }).then(track => {
-          console.log(track)
+      return Promise.all(promises)
+    }).then(allSongs => {
+      this.setState({
+        playlist: allSongs
+      })
     })
-    // })
   }
-
-  render() {
+  makeLink(song){
     return (
-      <div> Fix me </div>
+      <Link key={song.id} to={`/play/${song.id}`}>{song.title}</Link>
+    )
+  }
+  render() {
+    let { playlist } = this.state;
+    console.log(playlist)
+    return (
+      <div className='playlist-wrapper'>
+        {playlist.map(::this.makeLink)}
+      </div>
     )
   }
 }
