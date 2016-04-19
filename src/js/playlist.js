@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SC from './soundcloud';
 import firebaseAPI from 'firebase-api';
+import { Link } from 'react-router';
 
 const tracks = firebaseAPI('soundly').resource('tracks');
 //component will mount:
@@ -18,7 +19,7 @@ export default class PlayList extends Component {
 
   makeListItems(track){
   	console.log(track);
-  	return <li>{track.title}</li>
+  	return <Link to={`/play/${track.id}`}>{track.title}</Link>
   }
 
   componentWillMount(){
