@@ -1,12 +1,6 @@
 // // Javascript Entry Point
-//
-<<<<<<< HEAD
-import SC from 'soundcloud';
-//
-=======
 import SC from './soundcloud';
 
->>>>>>> ffad9debec3b5072a864a868971183c5613bea3a
 // SC.initialize({
 //   client_id: '673d246b540014d9fc9f383caf115b61',
 //   redirect_uri: 'http://localhost:8080/callback.html'
