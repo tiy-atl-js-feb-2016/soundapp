@@ -28,6 +28,9 @@ import { Router, Route, hashHistory } from 'react-router';
 import Search from './search';
 import Player from './player';
 import PlayList from './playlist';
+import firebaseAPI from 'firebase-api';
+
+const tracks = firebaseAPI('soundly').resource('tracks');
 
 function addTrack(data, replace) {
   // params.track_id <- add to playlist
