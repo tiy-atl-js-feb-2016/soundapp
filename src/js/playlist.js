@@ -18,8 +18,8 @@ export default class PlayList extends Component {
     }
 
   makeListItems(track){
-  	console.log(track);
-  	return <Link to={`/play/${track.id}`}>{track.title}</Link>
+  	// console.log(track);
+  	return <Link key={track.id} to={`/play/${track.id}`}>{track.title}</Link>
   }
   componentWillMount(){
     // allTracks = [];
@@ -53,11 +53,6 @@ export default class PlayList extends Component {
     	console.log(error);
     })
 
-  }
-  makeLink(song){
-    return (
-      <Link key={song.id} to={`/play/${song.id}`}>{song.title}</Link>
-    )
   }
   render() {
     let { tracks } = this.state;
