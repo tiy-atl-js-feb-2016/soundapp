@@ -3,3 +3,16 @@
 // Turn on freq used libraries
 // @import 'normalize-css/normalize';
 // @import 'font-awesome/scss/font-awesome';
+@import 'search';
+
+//Fonts 
+$roboto: 'Roboto', sans-serif;
+
+* {
+  list-style-type: none;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
