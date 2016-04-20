@@ -76,7 +76,9 @@ export default class Search extends Component {
 				  actionIcon={<Link to={`/playlist/add/${track.id}`}><IconButton tooltip="Add to playlist" tooltipPosition="top-left"><StarBorder color="white"/></IconButton></Link>}
 				>
 
-				<Link to={`/play/${track.id}`}><img src={artwork} title="Click to play"/></Link>
+				<Link to={`/play/${track.id}`}>
+          <img src={artwork} title="Click to play"/>
+        </Link>
 					
 				</GridTile>
 			);
