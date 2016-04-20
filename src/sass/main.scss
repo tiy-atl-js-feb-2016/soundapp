@@ -2,4 +2,54 @@
 
 // Turn on freq used libraries
 // @import 'normalize-css/normalize';
-// @import 'font-awesome/scss/font-awesome';
+@import 'font-awesome/scss/font-awesome';
+.player-wrapper {
+  border: 1px solid black;
+  height: 230px;
+  width: 370px;
+  margin: auto;
+  font-size: 40px;
+  border-radius: 7px;
+  padding-bottom: 0;
+  box-shadow: 10px 10px 5px #888888;
+
+	.play-pause {
+	  border-radius: 10px;
+	  height: 60px;
+	  display: flex;
+	  justify-content: space-around;
+	  align-items: center;
+	  position: relative;
+
+	}
+	
+	.scrubber {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		top: 25%;
+	}
+}
+.button-player1 {
+  border: none;
+  font-size: 32px;
+  position: relative;
+  top: 68%;
+  left: 1%;
+  background-color: transparent;
+}
+
+.button-player2 {
+  border: none;
+  background-color: transparent;
+  font-size: 32px;
+  position: relative;
+  top: 68%;
+  left: -4%;
+
+}
+
