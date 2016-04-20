@@ -1,5 +1,9 @@
-/* CSS Entry Point */
+@import 'normalize-css/normalize';
+@import 'font-awesome/scss/font-awesome';
 
-// Turn on freq used libraries
-// @import 'normalize-css/normalize';
-// @import 'font-awesome/scss/font-awesome';
+.playlist-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 50vh;
+}

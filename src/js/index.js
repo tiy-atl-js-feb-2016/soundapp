@@ -1,7 +1,6 @@
 // // Javascript Entry Point
-//
-// import SC from 'soundcloud';
-//
+import SC from './soundcloud';
+
 // SC.initialize({
 //   client_id: '673d246b540014d9fc9f383caf115b61',
 //   redirect_uri: 'http://localhost:8080/callback.html'
@@ -28,10 +27,16 @@ import { Router, Route, hashHistory } from 'react-router';
 import Search from './search';
 import Player from './player';
 import PlayList from './playlist';
+import firebaseAPI from 'firebase-api';
+
+const tracks = firebaseAPI('soundly').resource('tracks');
 
 function addTrack(data, replace) {
   // params.track_id <- add to playlist
-  console.log('track', data.params.track_id);
+  tracks.post({trackID: data.params.track_id}).then(track => {
+    console.log(track);
+  })
+  // console.log('track', data.params.track_id);
   replace('/playlist')
 }
 
@@ -43,3 +48,6 @@ render((
     <Route path="/playlist" component={PlayList}/>
   </Router>
 ), document.querySelector('.app'))
+
+
+// [59966922, 46833586, 117673524, 100623452, 37684353, 74406823, 75817165]
